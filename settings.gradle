@@ -1,4 +1,4 @@
 include ':mvvm'
 include ':mvp'
-include ':mvc' //include ':app'
+include ':mvc'
 rootProject.name = "Architecture patterns"
