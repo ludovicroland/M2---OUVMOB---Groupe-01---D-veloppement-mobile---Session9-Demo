@@ -20,7 +20,7 @@ import fr.efrei.mvc.service.ContactApiService;
  * @author Ludovic Roland
  * @since 2020.11.13
  */
-public class MainActivity
+public final class MainActivity
     extends AppCompatActivity
 {
 

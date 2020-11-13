@@ -17,7 +17,7 @@ import fr.efrei.mvc.model.Contact;
  * @author Ludovic Roland
  * @since 2020.11.13
  */
-public class ContactsRecyclerViewAdapter
+public final class ContactsRecyclerViewAdapter
     extends RecyclerView.Adapter<ContactsRecyclerViewAdapter.ViewHolder>
 {
 
