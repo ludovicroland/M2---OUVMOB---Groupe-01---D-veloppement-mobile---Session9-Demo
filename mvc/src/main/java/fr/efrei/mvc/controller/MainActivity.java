@@ -3,6 +3,9 @@ package fr.efrei.mvc.controller;
 import java.util.List;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -25,6 +28,8 @@ public class MainActivity
 
   private RecyclerView recyclerView;
 
+  private RelativeLayout loaderContainer;
+
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
@@ -34,6 +39,8 @@ public class MainActivity
 
     recyclerView = findViewById(R.id.list_contacts);
     recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+    loaderContainer = findViewById(R.id.loader_container);
   }
 
   @Override
@@ -46,8 +53,14 @@ public class MainActivity
 
   private void initList()
   {
-    contacts = new ContactApiService().getContacts();
-    recyclerView.setAdapter(new ContactsRecyclerViewAdapter(contacts));
+    loaderContainer.setVisibility(View.VISIBLE);
+
+    new Handler().postDelayed(() -> {
+      contacts = new ContactApiService().getContacts();
+      recyclerView.setAdapter(new ContactsRecyclerViewAdapter(contacts));
+
+      loaderContainer.setVisibility(View.INVISIBLE);
+    }, 2_000);
   }
 
 }
